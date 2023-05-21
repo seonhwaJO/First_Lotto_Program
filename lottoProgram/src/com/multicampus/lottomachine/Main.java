@@ -4,7 +4,7 @@ import com.multicampus.lottomachine.service.ApplicationService;
 
 public class Main {
 	public static void main(String[] args) {
-		ApplicationService appservice = new ApplicationService(); //appservice 객체생성
-		appservice.start();  //appservice 시작
+		ApplicationService appService = new ApplicationService(); //appservice 객체생성
+		appService.start();  //appservice 시작
 	}
 }

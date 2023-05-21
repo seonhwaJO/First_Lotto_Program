@@ -4,20 +4,22 @@ package com.multicampus.lottomachine.domain;
 
 // Question 
 public enum MenuType {
-    SIGN_UP(1,"회원가입"),
-    LOG_IN(2,"로그인"),
-    DEPOSIT(3,"금액충전"),
-    BUY_LOTTO(4,"로또구매"),
-    LOTTO_GAME(5,"로또게임"),
-    MEMBER_GAME_RESULT(6,"사용자 당첨 내역"),
-    EXIT(7,"종료");
+    SIGN_UP(1,"회원가입",false),
+    LOG_IN(2,"로그인",false),
+    DEPOSIT(3,"금액충전",true),
+    BUY_LOTTO(4,"로또구매",true),
+    LOTTO_GAME(5,"로또게임",true),
+    MEMBER_GAME_RESULT(6,"사용자 당첨 내역",true),
+    EXIT(7,"종료",false);
 	
 	private int code;
 	private String description;
+	private boolean loginRequired;
 	
-	MenuType(int code, String description){
+	MenuType(int code, String description, boolean loginRequired){
 		this.code = code;
 		this.description = description;
+		this.loginRequired = loginRequired;
 	}
 	
 	public int getCode() {
@@ -25,6 +27,10 @@ public enum MenuType {
 	}
 	public String getDescription() {
 		return description; 
+	}
+	
+	public boolean isLoginRequired() {
+		return loginRequired;
 	}
 	
 	public static MenuType getMenuTypeByCode(int code) {	//메뉴 번호로 메뉴타입 고르기
