@@ -1,5 +1,6 @@
 package com.multicampus.lottomachine.domain;
 
+import java.util.Random;
 import java.util.TreeSet;
 
 import com.multicampus.lottomachine.exception.DuplicationNubersException;
@@ -9,11 +10,27 @@ import com.multicampus.lottomachine.exception.NumberOutOfBoundException;
 public class CustomerLottoVO implements LottoVo{
 	private TreeSet<Integer> customerNumbers = new TreeSet<Integer>();	//사용자 데이터를 입력할 TreeSet
 	private String[] inputs;		//사용자 입력값을 쪼개서 넣을 배열
+	private String autoInfo;	//자동 수동 정보
 	public CustomerLottoVO(String input) {// 1,2,3,3,5,7
-		inputs = input.split(",");		// 입력값을 ','을 기준으로 배열에 넣습니다.
-		setList();					// 배열의 값을 Treeset에 저장
+		if(input.equals("자동")) {
+			autoInfo="자동";
+			crateRandomList();
+		}else{
+			inputs = input.split(",");		// 입력값을 ','을 기준으로 배열에 넣습니다.
+			autoInfo="수동";
+			setList();
+		}
 	}
-	
+
+	private void crateRandomList() {
+		Random rd = new Random();
+		int[] randomVal=new int[6];
+		for(int random:randomVal) {			
+			random=rd.nextInt(45)+1;
+			customerNumbers.add(random);
+		}
+	}
+
 	public void setList() throws NumberFormatException{	//사용자 값을 Treeset에 넣기
 		//에러포인트1 : 6개 초과, 미만으로 입력했을때
 		if(inputs.length!=6) {
@@ -44,5 +61,8 @@ public class CustomerLottoVO implements LottoVo{
 		}
 		return this.customerNumbers;
 	}
-	
+
+	public String getAutoInfo() {
+		return autoInfo;
+	}
 }
