@@ -10,7 +10,8 @@ public enum MenuType {
     BUY_LOTTO(4,"로또구매",true),
     LOTTO_GAME(5,"로또게임",true),
     MEMBER_GAME_RESULT(6,"사용자 당첨 내역",true),
-    EXIT(7,"종료",false);
+    LOGOUT(7,"로그아웃",true),
+    EXIT(8,"종료",false);
 	
 	private int code;
 	private String description;
