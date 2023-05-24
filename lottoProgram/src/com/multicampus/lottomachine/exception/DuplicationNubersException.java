@@ -1,6 +1,6 @@
 package com.multicampus.lottomachine.exception;
 
-public class DuplicationNubersException extends RuntimeException {	//중복값 Exception
+public class DuplicationNubersException extends RuntimeException {
 	public DuplicationNubersException(String message) {
 		super(message);
 	}
