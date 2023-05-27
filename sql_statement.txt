@@ -1,0 +1,47 @@
+drop database lotto_machine;
+create database lotto_machine default character set utf8 collate utf8_general_ci;
+
+use lotto_machine;
+
+create table member(
+	id varchar(20) primary key not null, -- 회원 아이디
+    password varchar(20) not null,	-- 회원 패스워드 
+    name varchar(50) not null,	-- 회원 이름
+    nickname varchar(50) not null unique, -- 회원 닉네임
+    balance int default 0,	-- 회원 보유금액 
+    ticket int default 0	-- 회원` 보유티켓
+);
+
+create table winningNumbers(
+	round int auto_increment primary key,
+    number1 int not null,
+    number2 int not null,
+    number3 int not null,
+    number4 int not null,
+    number5 int not null,
+    number6 int not null,
+	bonus_number int not null
+);
+
+create table memberNumbers(
+	user_id varchar(20) primary key not null,
+    round int default 0 not null,
+    number1 int not null,
+    number2 int not null,
+    number3 int not null,
+    number4 int not null,
+    number5 int not null,
+    number6 int not null,
+    foreign key (user_id) references member(member_id) on delete cascade,
+    foreign key (round) references winningNumber(round)
+);
+
+create table resultNumbers(
+	user_id varchar(20) primary key not null,	-- user아이디
+    round int not null,	-- 회차 번호
+    grade int not null,	-- 당첨 등수 0은 낙첨 
+	receieved_amount int default 0, -- 해당 회차 회원 수령 금액
+    foreign key (user_id) references member(member_id) on delete cascade,
+	foreign key (round) references winningNumber(round)
+);
+
