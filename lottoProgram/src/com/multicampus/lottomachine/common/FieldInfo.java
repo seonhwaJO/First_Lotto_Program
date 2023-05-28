@@ -4,7 +4,8 @@ public enum FieldInfo {
 	ID("아이디","id",true),
     NAME("이름", "name", null),
     PASSWORD("패스워드", "password", false),
-    NICKNAME("닉네임", "nickname", true);
+    NICKNAME("닉네임", "nickname", true),
+	BALANCE("보유금액","balance",false);
 	
     private final String fieldName;
     private final String fieldValue;

@@ -8,7 +8,8 @@ public class MemberDTO {
 	private String nickName;		//회원닉네임
 	int balance;	//회원 보유금액
 	int ticket;	//회원 보유 티켓
-	public MemberDTO(String id, String name, String password, String nickName) {
+	public MemberDTO() {}	//sql 입력을 위해
+	public MemberDTO(String id, String name, String password, String nickName) {	//회원가입을 위해
 		this.id = id;
 		this.name = nickName;
 		this.password = password;
@@ -49,5 +50,8 @@ public class MemberDTO {
 	}
 	public void setTicket(int ticket) {
 		this.ticket = ticket;
+	}
+	public boolean isEmpty() {	// 사용자가 로그인 했는지 확인하는 메서드
+		return id == null || id.isEmpty();	//ID 확인해서 없으면 False
 	}
 }

@@ -16,7 +16,7 @@ public class DuplicationValidation implements Validation{
 	@Override
 	public void validate(String input) throws OutOfRangeException {	//중복 여부 확인
 		if(check) {
-			throw new DuplicationException("이미 있는 "+fieldName+"입니다.");
+			throw new DuplicationException("[경고]이미 있는 "+fieldName+"입니다.");
 		}
 	}
 }

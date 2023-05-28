@@ -13,6 +13,6 @@ public interface Validation {	// 각 값들을 검증할 클래스
 	}
 	
 	default void checkValue() {	// 객체 생성하고 쓸 때
-		System.out.println("interface의 default");
+		System.out.println("[경고]interface의 default");
 	}
 }

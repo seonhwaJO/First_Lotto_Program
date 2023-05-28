@@ -12,7 +12,7 @@ public class PasswordValidation implements Validation{
 	public void validate(String input) throws OutOfRangeException {
 		match = Pattern.compile(PASSWORD_PATTERN).matcher(input);
 		if(!match.find()){
-			throw new OutOfRangeException("비밀번호는 8자리 이상, 숫자, 특수문자, 영문을 조합해주세요.");
+			throw new OutOfRangeException("[경고]비밀번호는 8자리 이상, 숫자, 특수문자, 영문을 조합해주세요.");
 		}
 	}
 }
